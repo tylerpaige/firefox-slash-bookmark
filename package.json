@@ -1,0 +1,14 @@
+{
+  "name": "bookmark-newtab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Firefox new-tab override: jump to a bookmark by folder/title path",
+  "scripts": {
+    "lint": "web-ext lint",
+    "run": "web-ext run",
+    "release": "web-ext sign --channel=unlisted"
+  },
+  "devDependencies": {
+    "web-ext": "^8.3.0"
+  }
+}

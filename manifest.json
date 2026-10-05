@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "Bookmark Path Opener",
+  "version": "1.0.0",
+  "description": "New-tab page that jumps to a bookmark by folder/title path",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "bookmark-newtab@tylerpaige.net",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "permissions": ["bookmarks"],
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  }
+}

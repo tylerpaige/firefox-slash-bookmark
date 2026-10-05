@@ -1,0 +1,81 @@
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  background: Canvas;
+  color: CanvasText;
+  font-family: -apple-system, system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding-top: 18vh;
+  margin: 0;
+}
+
+#container {
+  width: 42rem;
+  max-width: 90vw;
+}
+
+#query {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.75rem;
+  padding: 0.6rem 0.8rem;
+  background: Field;
+  color: FieldText;
+  border: 1px solid GrayText;
+  border-radius: 6px;
+  outline: none;
+}
+
+#hints {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.9rem 0.8rem;
+  list-style: none;
+  color: GrayText;
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+#hints li {
+  margin: 0.5em 0;
+}
+
+#hints kbd {
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  background: Field;
+  border: 1px solid GrayText;
+  border-radius: 3px;
+  padding: 0.05rem 0.35rem;
+}
+
+#hints .chord {
+  display: inline-flex;
+  gap: 0.3em;
+}
+
+#results {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+}
+
+#results li {
+  padding: 0.5rem 0.8rem;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#results li.selected {
+  background: Highlight;
+  color: HighlightText;
+}
