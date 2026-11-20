@@ -5,7 +5,7 @@
   "description": "Keyboard-first bookmarks: a new-tab page that jumps by folder path or keyword, and an editor for keywords, folders and tags",
   "browser_specific_settings": {
     "gecko": {
-      "id": "slash-bookmark@tylerpaige.net",
+      "id": "slash-bookmark@tylerpaige.com",
       "strict_min_version": "128.0",
       "data_collection_permissions": {
         "required": [
