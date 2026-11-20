@@ -1,0 +1,198 @@
+:root {
+  color-scheme: light dark;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --warn: #c2410c;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --warn: #fb923c; }
+}
+
+body {
+  background: Canvas;
+  color: CanvasText;
+  font: 13px -apple-system, system-ui, sans-serif;
+  margin: 0;
+}
+
+kbd {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  border: 1px solid GrayText;
+  border-radius: 3px;
+  padding: 0 0.3em;
+}
+
+button {
+  font: inherit;
+  padding: 0.3rem 0.9rem;
+  border-radius: 5px;
+  border: 1px solid GrayText;
+  background: ButtonFace;
+  color: ButtonText;
+}
+button[type="submit"] {
+  background: AccentColor;
+  color: AccentColorText;
+  border-color: AccentColor;
+}
+button.danger { color: var(--warn); }
+
+.error { color: var(--warn); }
+
+/* --- Editor --- */
+
+.editor h1 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: GrayText;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  align-items: start;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+.field label {
+  padding-top: 0.4rem;
+  color: GrayText;
+  text-align: right;
+}
+.control { position: relative; min-width: 0; }
+
+.field input {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 0.35rem 0.5rem;
+  background: Field;
+  color: FieldText;
+  border: 1px solid GrayText;
+  border-radius: 5px;
+  outline: none;
+}
+.field input:focus { border-color: AccentColor; box-shadow: 0 0 0 1px AccentColor; }
+#field-keyword { font-family: var(--mono); font-size: 1.15rem; }
+#field-url { font-family: var(--mono); font-size: 0.85em; }
+
+.note { font-size: 0.85em; color: GrayText; min-height: 0; }
+.note:not(:empty) { margin-top: 0.2rem; }
+.note.warn { color: var(--warn); }
+
+.suggestions {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 2px 0 0;
+  padding: 3px;
+  list-style: none;
+  background: Field;
+  border: 1px solid GrayText;
+  border-radius: 5px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.18);
+}
+.suggestions li {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  padding: 0.25rem 0.45rem;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.suggestions .label { font-family: var(--mono); }
+.suggestions .detail {
+  color: GrayText;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.suggestions li.selected { background: Highlight; color: HighlightText; }
+.suggestions li.selected .detail { color: inherit; opacity: 0.8; }
+
+.status { margin: 0.5rem 0 0; color: GrayText; }
+.status:empty { display: none; }
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.actions .hint { flex: 1; color: GrayText; font-size: 0.85em; }
+
+/* --- Popup --- */
+
+body.popup { width: 460px; }
+body.popup main { padding: 0.9rem 0.9rem 0.6rem; }
+body.popup footer {
+  padding: 0.45rem 0.9rem;
+  border-top: 1px solid color-mix(in srgb, GrayText 35%, transparent);
+  font-size: 0.85em;
+}
+body.popup footer a { color: GrayText; }
+
+/* --- Manager --- */
+
+body.manager { padding: 1.5rem; }
+body.manager header {
+  position: sticky;
+  top: 0;
+  background: Canvas;
+  padding-bottom: 0.75rem;
+}
+#filter {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  padding: 0.5rem 0.7rem;
+  background: Field;
+  color: FieldText;
+  border: 1px solid GrayText;
+  border-radius: 6px;
+  outline: none;
+}
+.toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 0.6rem;
+  color: GrayText;
+}
+#count { margin-left: auto; }
+
+table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+th {
+  text-align: left;
+  font-weight: 600;
+  color: GrayText;
+  padding: 0.3rem 0.6rem;
+  border-bottom: 1px solid GrayText;
+}
+th:nth-child(1) { width: 18%; }
+th:nth-child(2) { width: 36%; }
+th:nth-child(3) { width: 22%; }
+td {
+  padding: 0.3rem 0.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+td.keyword { font-family: var(--mono); }
+td.empty { color: GrayText; font-style: italic; }
+tr.selected td { background: Highlight; color: HighlightText; }
+
+dialog {
+  width: min(560px, 90vw);
+  padding: 1.1rem;
+  border: 1px solid GrayText;
+  border-radius: 8px;
+  background: Canvas;
+  color: CanvasText;
+}
+dialog::backdrop { background: rgb(0 0 0 / 0.35); }

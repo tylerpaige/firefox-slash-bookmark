@@ -1,0 +1,35 @@
+[
+  {
+    "namespace": "placesMeta",
+    "description": "Read and write the bookmark keywords and tags that the standard bookmarks API doesn't expose.",
+    "functions": [
+      {
+        "name": "getAll",
+        "type": "function",
+        "description": "Every keyword and every tag, as flat {keyword, url} / {tag, url} lists.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "setKeyword",
+        "type": "function",
+        "description": "Make `keyword` the only keyword for `url`. An empty string removes the URL's keywords. A keyword already used by another URL is moved to this one.",
+        "async": true,
+        "parameters": [
+          { "name": "url", "type": "string" },
+          { "name": "keyword", "type": "string" }
+        ]
+      },
+      {
+        "name": "setTags",
+        "type": "function",
+        "description": "Make `tags` the exact tag set for `url`.",
+        "async": true,
+        "parameters": [
+          { "name": "url", "type": "string" },
+          { "name": "tags", "type": "array", "items": { "type": "string" } }
+        ]
+      }
+    ]
+  }
+]

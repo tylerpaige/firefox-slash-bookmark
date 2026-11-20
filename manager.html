@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>/bookmark</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="manager">
+  <header>
+    <input id="filter" autocomplete="off" spellcheck="false"
+           placeholder="Filter by keyword, title, folder, tag or URL">
+    <div class="toggles">
+      <label><input type="checkbox" id="no-keyword"> Missing keyword <kbd>alt</kbd>+<kbd>k</kbd></label>
+      <label><input type="checkbox" id="no-tags"> Missing tags <kbd>alt</kbd>+<kbd>t</kbd></label>
+      <span id="count"></span>
+    </div>
+  </header>
+  <table>
+    <thead><tr><th>Keyword</th><th>Title</th><th>Folder</th><th>Tags</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <dialog id="dialog"><div id="editor"></div></dialog>
+  <script type="module" src="manager.js"></script>
+</body>
+</html>

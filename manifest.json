@@ -1,0 +1,78 @@
+{
+  "manifest_version": 2,
+  "name": "/bookmark",
+  "version": "1.0.0",
+  "description": "Keyboard-first bookmark editor with keywords, folders and tags in one place",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "slash-bookmark@tylerpaige.net",
+      "strict_min_version": "128.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "permissions": [
+    "bookmarks",
+    "activeTab"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_title": "Edit bookmark",
+    "default_popup": "popup.html",
+    "default_area": "navbar",
+    "default_icon": "icons/icon-dark.svg",
+    "theme_icons": [
+      {
+        "light": "icons/icon-light.svg",
+        "dark": "icons/icon-dark.svg",
+        "size": 16
+      },
+      {
+        "light": "icons/icon-light.svg",
+        "dark": "icons/icon-dark.svg",
+        "size": 32
+      }
+    ]
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+D"
+      },
+      "description": "Add or edit the bookmark for this page"
+    },
+    "open-manager": {
+      "suggested_key": {
+        "default": "Alt+Shift+B"
+      },
+      "description": "Open the bookmark manager"
+    }
+  },
+  "options_ui": {
+    "page": "manager.html",
+    "open_in_tab": true
+  },
+  "experiment_apis": {
+    "placesMeta": {
+      "schema": "experiments/places-meta/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "placesMeta"
+          ]
+        ],
+        "script": "experiments/places-meta/api.js"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "firefox-slash-bookmark",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Firefox/Waterfox extension: keyboard-first bookmark editor with keywords, folders and tags",
+  "scripts": {
+    "lint": "web-ext lint --privileged",
+    "run": "web-ext run --firefox=/Applications/Waterfox.app/Contents/MacOS/waterfox",
+    "build": "web-ext build --overwrite-dest --ignore-files package.json package-lock.json README.md"
+  },
+  "devDependencies": {
+    "web-ext": "^8.3.0"
+  }
+}
