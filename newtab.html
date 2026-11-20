@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bookmark Path Opener</title>
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+  <div id="container">
+    <input id="query" autocomplete="off" spellcheck="false" placeholder="path/to/bookmark or keyword">
+    <ul id="hints">
+      <li>Press <kbd>esc</kbd> or <kbd>f6</kbd> to move focus from the address bar to the page content</li>
+      <li><span class="chord"><kbd>alt</kbd>+<kbd>shift</kbd>+<kbd>1</kbd></span> to open a Linked by Air tab</li>
+      <li><span class="chord"><kbd>alt</kbd>+<kbd>shift</kbd>+<kbd>2</kbd></span> to open a self tab</li>
+      <li><span class="chord"><kbd>alt</kbd>+<kbd>shift</kbd>+<kbd>3</kbd></span> to open a Pratt tab</li>
+      <li><span class="chord"><kbd>alt</kbd>+<kbd>shift</kbd>+<kbd>4</kbd></span> to open a garbagecan</li>
+    </ul>
+    <ul id="results"></ul>
+  </div>
+  <script type="module" src="newtab.js"></script>
+</body>
+</html>

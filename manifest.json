@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "/bookmark",
   "version": "1.0.0",
-  "description": "Keyboard-first bookmark editor with keywords, folders and tags in one place",
+  "description": "Keyboard-first bookmarks: a new-tab page that jumps by folder path or keyword, and an editor for keywords, folders and tags",
   "browser_specific_settings": {
     "gecko": {
       "id": "slash-bookmark@tylerpaige.net",
@@ -58,6 +58,9 @@
   "options_ui": {
     "page": "manager.html",
     "open_in_tab": true
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
   },
   "experiment_apis": {
     "placesMeta": {

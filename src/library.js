@@ -141,6 +141,38 @@ export function suggestTags(keyword, lib) {
   return [...new Set(tags)];
 }
 
+// --- Keyword completion ------------------------------------------------------
+
+// Shell-style completion of the last keyword segment against existing
+// keywords: "ft/gi" -> "ft/git", "ec/n" -> "ec/n" + longest common prefix of
+// "news" and "nx". A segment that's already complete is left alone so Tab
+// can move on to the next field.
+export function completeKeywordSegment(value, keywords) {
+  if (!value) return null;
+  const cut = value.lastIndexOf("/") + 1;
+  const head = value.slice(0, cut);
+  const partial = value.slice(cut);
+  const options = new Set();
+  for (const keyword of keywords) {
+    if (!keyword.startsWith(head)) continue;
+    const seg = keyword.slice(head.length).split("/")[0];
+    if (seg.startsWith(partial)) options.add(seg);
+  }
+  if (!options.size || options.has(partial)) return null;
+  const common = longestCommonPrefix([...options]);
+  return common.length > partial.length ? head + common : null;
+}
+
+function longestCommonPrefix(strings) {
+  let prefix = strings[0];
+  for (const s of strings.slice(1)) {
+    let i = 0;
+    while (i < prefix.length && i < s.length && prefix[i] === s[i]) i++;
+    prefix = prefix.slice(0, i);
+  }
+  return prefix;
+}
+
 // --- Folder suggestions ----------------------------------------------------
 //
 // For each keyword prefix ("ft", "ft/git", ...) count which folders its

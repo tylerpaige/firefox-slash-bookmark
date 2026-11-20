@@ -1,11 +1,36 @@
 # /bookmark
 
-A keyboard-first replacement for Firefox's add/edit bookmark dialog, built for
-Waterfox. You can set the bookmark **keyword** (the field Firefox's star dialog
-leaves out) along with title, folder, tags and URL, and the editor fills in the
-folder and tags from the keyword using your existing conventions.
+Keyboard-first bookmarks for Waterfox, in one extension:
+
+- **New tab page**: type a bookmark's folder path (`further/jira`) or its
+  keyword (`ft/jira`) and press Enter to go there.
+- **Bookmark editor**: a replacement for the add/edit bookmark dialog with the
+  **keyword** field that Firefox's star dialog leaves out, plus title, folder,
+  tags and URL. It fills in the folder and tags from the keyword using your
+  existing conventions.
 
 ## Usage
+
+### New tab
+
+Open a new tab and start typing. Results match on folder path
+(`FURTHER/Jira`) and on keyword (`ft/jira`), with the keyword shown on the
+right. <kbd>↑</kbd>/<kbd>↓</kbd> choose a result and <kbd>enter</kbd> opens it
+in the current tab, which keeps the tab's container (e.g. one opened via Easy
+Container Shortcuts). <kbd>tab</kbd> completes one segment at a time. Folder
+paths are tried first, then keywords (`ft/gi` → `ft/git`).
+
+If focus lands in the address bar, press <kbd>esc</kbd> or <kbd>f6</kbd> to
+move it to the page.
+
+Vimium and Tridactyl can't do this. Content scripts can't run on Firefox's
+native `about:newtab`, and an extension's new-tab URL can't take focus away
+from the address bar. Firefox's new-tab *override*
+(`chrome_url_overrides.newtab` in `manifest.json`) uses a separate code path
+that doesn't have this problem (see
+[bugzilla 1372996](https://bugzilla.mozilla.org/show_bug.cgi?id=1372996)).
+
+### Bookmark editor
 
 **<kbd>alt</kbd>+<kbd>shift</kbd>+<kbd>d</kbd>** (or the toolbar button) opens
 the editor for the current page. If the page is already bookmarked, it edits
@@ -76,6 +101,10 @@ that URL, the old URL's keyword and tags are cleared.
 
 ## Install
 
+This extension replaces the separate `bookmark-newtab` extension
+(`firefox-bookmark-searcher`). Uninstall that one first, or the two new-tab
+overrides will compete.
+
 No signing needed:
 
 ```
@@ -84,8 +113,7 @@ npm run build
 ```
 
 Then in Waterfox, go to `about:addons` → gear icon → **Install Add-on From
-File…** and choose the `.zip` in `web-ext-artifacts/`. Rename it to `.xpi`
-first if the file picker won't accept it. For changes, bump `version` in
+File…** and choose the `.xpi` in `web-ext-artifacts/`. For changes, bump `version` in
 `manifest.json`, rebuild and reinstall.
 
 For development, `npm run run` launches Waterfox with a throwaway profile and
